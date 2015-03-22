@@ -1,7 +1,12 @@
 /**
  * Created by Roger on 21/03/2015.
+ * Dynamic Breadcrumbs for Bootstrap
  */
+
 $(document).ready(function() {
+    /**
+     * Script for dynamic breadcrumbs
+     */
     var crumb = [];
 
     $(".dynamic-crumbs li a").each(function() {
@@ -12,7 +17,7 @@ $(document).ready(function() {
     var crumbs = [];
 
     for (var x = amountCrumb; x > -1; x--) {
-            crumbs[x] = crumb.pop();
+        crumbs[x] = crumb.pop();
     }
 
     $(".dynamic-crumbs").empty();
@@ -43,5 +48,21 @@ $(document).ready(function() {
 
     $(".decrease").click(function() {
         removeCrumb();
+    });
+
+    /**
+     * Multi-steps form, ignore this
+     */
+    $('.next').on('click', function() {
+        var current = $(this).data('currentBlock');
+        var next = $(this).data('nextBlock');
+
+        $('.block' + current)
+            .removeClass('show')
+            .addClass('hidden');
+
+        $('.block' + next)
+            .removeClass('hidden')
+            .addClass('show');
     });
 });
